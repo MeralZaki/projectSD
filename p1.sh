@@ -1,4 +1,5 @@
 #!/bin/bash
+
 MOVIE_FILE="movies.txt"
 
 SHOWTIMES_FILE="showtimes.txt"
