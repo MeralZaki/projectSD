@@ -87,3 +87,63 @@ echo "$name, $id, $movie_title - $showtime, $seat, $payment, $payment_method" >>
 echo "Ticket booked for '$movie_title' at '$showtime', seat '$seat'. Payment: $payment using
 $payment_method." 
 }
+
+# Function to delete a booking
+function delete_booking() {
+    read -p "Enter your name: " name
+    read -p "Enter your ID: " id
+    read -p "Enter the movie title: " movie_title
+    read -p "Enter the showtime: " showtime
+    read -p "Enter seat number: " seat
+
+    # Construct the booking entry
+    booking_entry="$name, $id, $movie_title - $showtime, $seat"
+    
+    # Check if the booking exists
+    if grep -qF "$booking_entry" "$BOOKINGS_FILE"; then
+        # Delete the booking
+        sed -i "\|$booking_entry|d" "$BOOKINGS_FILE"
+        echo "Booking deleted for '$movie_title' at '$showtime', seat '$seat'."
+    else
+        echo "Error: Booking not found."
+    fi
+}
+
+# Menu function 
+function show_menu() { 
+    while true; do 
+        echo "Cinema Management Menu" 
+        echo "1. Show all movies" 
+        echo "2. Show showtimes for a movie" 
+        echo "3. Book a ticket" 
+        echo "4. Delete a booking" 
+        echo "5. Exit" 
+        read -p "Please choose an option (1-5): " choice 
+ 
+        case $choice in 
+            1) 
+                show_movies 
+                ;; 
+            2) 
+                read -p "Enter the movie title: "     movie_titleshow_showtimes "$movie_title" 
+                ;; 
+            3) 
+                book_ticket 
+                ;; 
+            4) 
+                delete_booking 
+                ;; 
+            5) 
+                echo "Exiting the menu." 
+                break 
+                ;; 
+            *) 
+                echo "Invalid option. Please choose 1, 2, 3, 4, or 5." 
+                ;; 
+        esac 
+        echo "" 
+    done 
+} 
+ 
+# Display the menu 
+show_menu
