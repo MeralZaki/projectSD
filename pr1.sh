@@ -15,3 +15,20 @@ function show_movies() {
         echo "No movies currently showing."
     fi
 }
+# Function to display showtimes for a movie
+function show_showtimes() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: show_showtimes <movie_title>"
+        return 1
+    fi
+
+    movie_title="$1"
+    showtimes=$(grep "$movie_title" "$SHOWTIMES_FILE")
+    if [ -n "$showtimes" ]; then
+        echo "Showtimes for '$movie_title':"
+        echo "$showtimes"
+    else
+        echo "No showtimes found for '$movie_title'."
+    fi
+}
+
