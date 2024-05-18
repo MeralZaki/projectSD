@@ -7,3 +7,11 @@ SHOWTIMES_FILE="showtimes.txt"
 
 # Bookings stored in another file
 BOOKINGS_FILE="bookings.txt"
+# Function to display all movies from movies.txt
+function show_movies() {
+    if [ -f "$MOVIE_FILE" ]; then
+        cat "$MOVIE_FILE"
+    else
+        echo "No movies currently showing."
+    fi
+}
