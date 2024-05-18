@@ -52,3 +52,4 @@ echo "$name, $id, $movie_title - $showtime, $seat, $payment, $payment_method" >>
 "$BOOKINGS_FILE"
 echo "Ticket booked for '$movie_title' at '$showtime', seat '$seat'. Payment: $payment using
 $payment_method." }
+#l
