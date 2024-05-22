@@ -1,5 +1,5 @@
 
-!/bin/bash
+#!/bin/bash
 # Movies currently showing stored in a file
 MOVIE_FILE="movies.txt"
 
@@ -82,10 +82,8 @@ read -p "Enter payment amount: " payment
 read -p "Enter payment method (credit card, cash, etc.): " payment_method
 
 # Append booking information to bookings file
-echo "$name, $id, $movie_title - $showtime, $seat, $payment, $payment_method" >>
-"$BOOKINGS_FILE"
-echo "Ticket booked for '$movie_title' at '$showtime', seat '$seat'. Payment: $payment using
-$payment_method." 
+echo "$name, $id, $movie_title - $showtime, $seat, $payment, $payment_method" >>"$BOOKINGS_FILE"
+echo "Ticket booked for '$movie_title' at '$showtime', seat '$seat'. Payment: $payment using $payment_method." 
 }
 
 # Function to delete a booking
@@ -145,5 +143,4 @@ function show_menu() {
     done 
 } 
  
-# Display the menu 
-show_menu
+
